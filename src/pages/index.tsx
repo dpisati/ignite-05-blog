@@ -64,7 +64,7 @@ export default function Home({ postsPagination }: HomeProps) {
           <p>{post.data.subtitle}</p>
           <section>
             <div>
-              <FiCalendar />
+              <FiCalendar style={{ color: '#bbbb' }} />
               <span style={{ textTransform: 'capitalize' }}>
                 {format(new Date(post.first_publication_date), 'dd LLL yy', {
                   locale: ptBR,
@@ -72,7 +72,7 @@ export default function Home({ postsPagination }: HomeProps) {
               </span>
             </div>
             <div>
-              <FiUser />
+              <FiUser style={{ color: '#bbbb' }} />
               <span>{post.data.author}</span>
             </div>
           </section>
