@@ -1,10 +1,6 @@
-import Prismic from '@prismicio/client';
-import { DefaultClient } from '@prismicio/client/types/client';
+import * as prismic from '@prismicio/client';
 
-export function getPrismicClient(req?: unknown): DefaultClient {
-  const prismic = Prismic.client(process.env.PRISMIC_API_ENDPOINT, {
-    req,
-  });
+export const repositoryName = 'ignite-05-blog';
+const endpoint = prismic.getEndpoint(repositoryName);
 
-  return prismic;
-}
+export const prismicClient = prismic.createClient(endpoint);
