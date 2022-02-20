@@ -1,7 +1,5 @@
-.headerContainer {
-  padding: 70px 0;
-  position: fixed;
-  width: 100%;
-
-  background-color: var(--background);
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2.5rem 0.65rem;
 }
