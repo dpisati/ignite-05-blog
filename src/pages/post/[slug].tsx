@@ -37,10 +37,10 @@ interface Post {
 }
 
 interface PostProps {
-  preview: boolean;
+  preview?: boolean;
   post: Post;
-  nextPost: Post | null;
-  prevPost: Post | null;
+  nextPost?: Post | null;
+  prevPost?: Post | null;
 }
 
 export default function Post({
@@ -98,7 +98,7 @@ export default function Post({
             <div className={styles.postInfos}>
               <time>
                 <FiCalendar />
-                {format(new Date(post.first_publication_date), 'dd MMM yyyy', {
+                {format(new Date(post.first_publication_date), `dd MMM yyyy`, {
                   locale: ptBR,
                 })}
               </time>
@@ -118,22 +118,13 @@ export default function Post({
                   <time>
                     {format(
                       new Date(post.last_publication_date),
-                      'dd MMM yyyy',
+                      `dd MMM yyyy`,
                       {
                         locale: ptBR,
                       }
                     )}
                   </time>
-                  , às{' '}
-                  <time>
-                    {format(
-                      new Date(post.last_publication_date),
-                      `${'HH'}:${'mm'}`,
-                      {
-                        locale: ptBR,
-                      }
-                    )}
-                  </time>
+                  , às <time>{post.last_publication_date}</time>
                 </span>
               </div>
             )}
@@ -235,6 +226,32 @@ export const getStaticProps: GetStaticProps = async ({
       after: response.id,
     }
   );
+
+  // const post = {
+  //   first_publication_date: format(
+  //     new Date(response.first_publication_date),
+  //     `dd MMM yyyy`,
+  //     {
+  //       locale: ptBR,
+  //     }
+  //   ),
+  //   last_publication_date: format(
+  //     new Date(response.last_publication_date),
+  //     `dd MMM yyyy`,
+  //     {
+  //       locale: ptBR,
+  //     }
+  //   ),
+  //   uid: response.uid,
+  //   data: {
+  //     title: response.data.title,
+  //     banner: {
+  //       url: response.data.banner.url,
+  //     },
+  //     author: response.data.author,
+  //     content: response.data.content,
+  //   },
+  // };
 
   return {
     props: {
